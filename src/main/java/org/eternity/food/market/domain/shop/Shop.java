@@ -3,7 +3,6 @@ package org.eternity.food.market.domain.shop;
 import lombok.Getter;
 import org.eternity.food.market.domain.generic.money.Money;
 import org.eternity.food.market.domain.generic.money.Ratio;
-import org.eternity.food.market.service.shop.Menu;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -68,7 +68,13 @@ public class Order {
             throw new IllegalStateException("가게가 영업중이 아닙니다.");
         }
 
-        if(!shop.)
+        if(!shop.isValidOrderAmount(calculateTotalPrice())) {
+            throw new IllegalStateException((String.format("최소 주문 금액 %s 이상을 주문해주세요.", shop.getMinOrderAmount())));
+        }
+
+        for(OrderLineItem orderLineItem : orderLineItems) {
+            orderLineItem.validate();
+        }
     }
 
     private void ordered() {
@@ -81,7 +87,7 @@ public class Order {
 
     public void delivered() {
         this.orderStatus = OrderStatus.DELIVERD;
-        this.shop.billCommissionFee((calculateTotalPrice());
+        this.shop.billCommissionFee(calculateTotalPrice());
     }
 
     private Money calculateTotalPrice() {

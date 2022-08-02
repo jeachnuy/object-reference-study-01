@@ -2,12 +2,13 @@ package org.eternity.food.market.domain.order;
 
 import lombok.Getter;
 import org.eternity.food.market.domain.generic.money.Money;
-import org.eternity.food.market.service.shop.Menu;
-import org.eternity.food.market.service.shop.OptionGroup;
+import org.eternity.food.market.domain.shop.Menu;
+import org.eternity.food.market.domain.shop.OptionGroup;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "ORDER_LINE_ITEMS")
@@ -55,6 +56,6 @@ public class OrderLineItem {
     }
 
     private List<OptionGroup> convertToOptionGroups() {
-        return groups.stream().map(OrderOptionGroup::convertToOptionGroups).collect(toList());
+        return groups.stream().map(OrderOptionGroup::convertToOptionGroup).collect(Collectors.toList());
     }
 }
